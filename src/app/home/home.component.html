@@ -3,16 +3,18 @@
 	<title>Login V3</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    
+	
+   
 </head>
 <body>
 	
 	<div class="limiter">
+			<div *ngIf="form.errors" class="alert alert-danger">username or password is invalid</div>
 		<div class="container-login100 bgImgCenter" >
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form " [formGroup]="form" (ngSubmit)="login()" >
+					
+					
 					<span class="login100-form-logo">
 						<i class="glyphicon glyphicon-home"></i>
 					</span>
@@ -22,24 +24,36 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<input class="input100" formControlName="username" type="text" name="username" placeholder="Username" >
+						<span class="focus-input100" data-placeholder="&#61447;"></span>
+
+						<div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+							<div *ngIf="username.pending">Checking the unique name</div>
+							<div *ngIf="username.errors.required">username is required</div>
+							<div *ngIf="username.errors.cannotContainSpace">username can not contain space</div>
+							<div *ngIf="username.errors.shouldBeUnique">username is already taken</div>
+							<div *ngIf="username.errors.minlength">username minimum length is {{username.errors.minlength.requiredLength}}</div>
+						</div>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+						<input class="input100" formControlName="password" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#61475;"></span>
+	
 					</div>
-
-					<div class="contact100-form-checkbox">
+					<div *ngIf="password.touched && password.invalid" class="alert alert-danger">Password is required</div>
+					<div class="checkbox">
+						<label><input type="checkbox" value="">Remember me</label>
+					  </div>
+					<!-- <div class="contact100-form-checkbox">
 						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 						<label class="label-checkbox100" for="ckb1">
 							Remember me
 						</label>
-					</div>
+					</div> -->
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" >
 							Login
 						</button>
 					</div>
@@ -60,3 +74,4 @@
 
 </body>
 </html>
+

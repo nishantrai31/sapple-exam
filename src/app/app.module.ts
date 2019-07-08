@@ -1,20 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { NotFoundComponent } from './not-found/not-found.component';
+import{GetData} from './services/get-data.service'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { QuestionFormComponent } from './question-form/question-form.component';
+import { RouterModule } from '@angular/router';
+import { AuthGard } from './services/auth-gard.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    QuestionFormComponent,
+    NotFoundComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'question-form', component: QuestionFormComponent,
+      canActivate:[AuthGard] },
+      { path: '**', component: NotFoundComponent }
+    ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthGard,
+    GetData
+  ],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

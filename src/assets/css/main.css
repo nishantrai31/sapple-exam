@@ -1,36 +1,41 @@
-@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+
+
+
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
 @font-face {
-    font-family: Poppins-Regular;
-    src: url('../../assets/fonts/poppins/Poppins-Regular.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Poppins-Medium;
-    src: url('../../assets/fonts/poppins/Poppins-Medium.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Poppins-Bold;
-    src: url('../../assets/fonts/poppins/Poppins-Bold.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Poppins-SemiBold;
-    src: url('../../assets/fonts/poppins/Poppins-SemiBold.ttf'); 
-  }
-  
-  
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+}
+
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
 * {
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
 }
-
-
-.bgImgCenter{ background-image: url('../../assets/images/bg-01.jpg') }
 
 body, html {
 	height: 100%;
@@ -287,7 +292,7 @@ iframe {
 }
 
 .focus-input100::after {
-  font-family: FontAwesome;
+  font-family: Material-Design-Iconic-Font;
   font-size: 22px;
   color: #fff;
 
@@ -340,7 +345,6 @@ iframe {
   padding-top: 5px;
   padding-bottom: 35px;
 }
-
 
 .input-checkbox100 {
   display: none;

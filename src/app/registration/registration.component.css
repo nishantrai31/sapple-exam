@@ -1,0 +1,195 @@
+body , html{
+  background: linear-gradient(to right, #ddc5c5, #1a237e); 
+  color: #ededed;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+  user-select: none;
+  text-shadow: 1px 1px #000000;
+ height: 800px;
+ width: 100%;
+}
+
+
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+i {
+  margin-left: 12px;
+  position: absolute;
+  color: #999;
+  padding-left: 5px;
+  z-index: 0 !important;
+  text-shadow: none;
+}
+.first-login-icon {
+  top: 33px;
+}
+.second-login-icon {
+  top: 83px;
+}
+.first-signup-icon {
+  top: 33px;
+  margin-left: 9px;
+}
+.second-signup-icon {
+  top: 83px;
+}
+.thirt-signup-icon {
+  top: 133px;
+}
+
+.card {
+ 
+  
+  position: relative;
+  -webkit-animation: mymove 5s inherit ;
+  
+  animation-delay: 2s;
+  animation: mymove ;
+  animation-duration: 3s; 
+  width: 750px;
+  height: 550px;
+  margin: 0 auto;
+  /* background: #503D5B
+  url('../../assets/images/body-bg.jpg'); */
+  background-size: cover;
+  border-radius: 4px;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.75);
+  
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {left: -400px;}
+  to {left: 20px;}
+}
+
+@keyframes mymove {
+  from {left: -400px;}
+  to {left: 20px;}
+}
+
+#navbar {
+  font-size: 1.25em;
+  padding: 1.5em;
+}
+
+#login-button:hover, 
+#sign-up-button:hover {
+  border-bottom: solid 2px #ededed;
+  cursor: pointer;
+}
+
+#login-button.active {
+  border-bottom: solid 2px #ededed;
+}
+
+#sign-up-button.active {
+  border-bottom: solid 2px #ededed;
+}
+
+#sign-up-form {
+  position: absolute;
+  display: block;
+  padding: 1em;
+  width: 410px;
+  margin-left: 125px;
+  margin-top: 25px;
+}
+
+#login-form {
+  display: none;
+  position: absolute;
+  padding: 1em;
+  width: 410px;
+  margin-left: 125px;
+  margin-top: 50px;
+}
+input[type="checkbox"] {
+  margin-left: 40px;
+  margin-top: 20px;
+}
+.checkbox-link {
+  color: #222;
+  font-weight: 600;
+  text-shadow: 1px 0px 1px #898989;
+}
+.checkbox-link:hover {
+  /*text-decoration: underline;*/
+  border-bottom: 2px solid #333;
+  cursor: pointer;
+}
+
+.label-container {
+  font-size: 1.15em;
+  height: 50px;
+  line-height: 50px;
+  width: 200px;
+  padding-left: 40px;
+  float: left;
+}
+.input-container {
+  height: 50px;
+  line-height: 50px;
+  width: 180px;
+  float: left;
+}
+.input-container input[type="text"], 
+.input-container input[type="date"],
+.input-container input[type="tel"], 
+.input-container input[type="password"] {
+  height: 35px;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 40px;
+  padding-right: 20px;
+  font-size: 1em;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+  color: #949599;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  border: none;
+  z-index: 1;
+}
+
+button {
+  height: 45px;
+  width: 375px;
+  opacity: 0.9;
+  font-size: 1em;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+  color: #ededed;
+  background: green;
+  border: none;
+  border-radius: 4px;
+  margin-top: 35px;
+  margin-left: calc(50% - 170px);
+  cursor: pointer;
+}
+button:hover {
+  background: #2e6f2e !important;
+  opacity: 1;
+}
+button:active {
+  background: #3b8d3b !important;
+}
+button:focus {
+  outline: none;
+}
+
+.align-left {
+  float: left;
+  text-align: left;
+}
+
+.align-right {
+  float: right;
+  text-align: right;
+}
+
+.clear-float {
+  clear: both;
+}

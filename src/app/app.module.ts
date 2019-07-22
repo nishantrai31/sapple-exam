@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { RouterModule } from '@angular/router';
 import { AuthGard } from './services/auth-gard.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule, MatSidenavModule} from '@angular/material';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -18,7 +22,9 @@ import { AuthGard } from './services/auth-gard.service';
     AppComponent,
     HomeComponent,
     QuestionFormComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RegistrationComponent,
+    ProfileComponent
     
   ],
   imports: [
@@ -31,8 +37,15 @@ import { AuthGard } from './services/auth-gard.service';
       { path: '', component: HomeComponent },
       { path: 'question-form', component: QuestionFormComponent,
       canActivate:[AuthGard] },
+      { path: 'Registration', component: RegistrationComponent },
+      { path: 'profile', component: ProfileComponent, canActivate:[AuthGard]},
       { path: '**', component: NotFoundComponent }
-    ])
+     
+    ]),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSidenavModule
+    
   ],
   providers: [
     AuthGard,

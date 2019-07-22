@@ -1,3 +1,23 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container  >
+        <mat-sidenav  #sidenav mode="push" [(opened)]="opened">
+                <div class="logoMain"><img src="https://www.sapplesystems.com/wp-content/uploads/2015/10/sapple-logo_New.png" alt="Logo" /></div>
+                <ul class="leftNav">
+                        
+                        <li (click)="onHome()"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</li>
+                        <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span> About Us</li>
+                        <li><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Services</li>
+                        <li><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Portfolio</li>
+                        <li  (click)="onLogout()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> logout</li>
+                        <li  (click)="onRegistratin()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> New Registration</li>
+                        <li  (click)="onQuestion()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> Question</li> 
+                </ul>
+        </mat-sidenav>
+        <mat-sidenav-content>
+                <span (click)="sidenav.open()" class="glyphicon glyphicon-tasks styleNav" aria-hidden="true"></span>
+                <!--<button (click)="sidenav.open()">...</button> -->
+                <router-outlet></router-outlet>
+        </mat-sidenav-content>
+</mat-sidenav-container>
+
 
 <!-- <question-form></question-form> -->

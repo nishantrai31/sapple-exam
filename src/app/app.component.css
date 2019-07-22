@@ -1,0 +1,19 @@
+mat-sidenav-container{
+    height: 100%;
+}
+
+button{
+    background-color: black;
+    width: 20px ;
+}
+
+mat-sidenav{
+    background-color: lightblue;
+    width: 200px ;
+}
+
+.styleNav{font-size: 24px; margin: 5px 5px 9px 10px;cursor: pointer;}
+ul.leftNav{list-style:none; padding:0px; margin:20px 0;}
+ul.leftNav li{    font-size: 16px;padding: 10px 15px;background-color: #333333;border-top: 1px solid #555555;cursor: pointer;}
+.logoMain{padding: 0 5px; overflow:hidden;}
+.logoMain img{margin-top:20px; height:47px;}

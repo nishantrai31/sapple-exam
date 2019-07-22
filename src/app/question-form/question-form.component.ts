@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 // import { FileUploadService } from '../file-upload.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'question-form',
@@ -9,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./question-form.component.css']
 })
 export class QuestionFormComponent implements OnInit {
+  isCollapsed:boolean=true;
   contactMethod;
   selectedFile:File=null;
   contactMethods=[
@@ -16,10 +18,22 @@ export class QuestionFormComponent implements OnInit {
     {id: 2, name: 'Expirence'},
   ];
 
-  constructor(private http: HttpClient) { }
+  userForm = new FormGroup({
+    Question: new FormControl('', [Validators.required]),
+    Answer_A: new FormControl('', [Validators.required]),
+    Answer_B: new FormControl('', [Validators.required]),
+    Answer_C: new FormControl(''),   
+    Answer_D:  new FormControl('', Validators.required),
+    Currect_ANS:  new FormControl('', Validators.required),
+    contactMethod: new FormControl('', Validators.required)
+   
+  });
+  
+  constructor(private http: HttpClient,private router: Router) { }
 
   
   ngOnInit() {
+
     
   }
 
@@ -38,7 +52,47 @@ export class QuestionFormComponent implements OnInit {
       });
     console.log(fb);
   }
+  submit()
+  {
+    console.log(this.userForm);
+  }
   selected(){
-    console.log(this.contactMethod)}
+    console.log(this.userForm.value.contactMethod);
+  }
+    
+    onLogout(){
+      localStorage.removeItem('name');
+      localStorage.removeItem('pass');
+      // console.log("login");
+      this.router.navigate(['/']);
+    }
 
+    xls()
+    {
+      this.isCollapsed=true;
+    }
+    manu()
+    {
+      this.isCollapsed=false;
+    }
+
+    get Question() {
+      return this.userForm.get('Quetion');
+   }
+   get Answer_A() {
+      return this.userForm.get('Answer_A');
+   }  
+   get Answer_B() {
+    return this.userForm.get('Answer_B');
+  }  
+   get Answer_C() {
+      return this.userForm.get('Answer_C');
+   }    
+   get Answer_D() {
+      return this.userForm.get('Answer_D');
+   }      
+   get Currect_ANS() {
+    return this.userForm.get('Currect_ANS');
+  }      
+  
 }

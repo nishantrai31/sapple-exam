@@ -11,6 +11,7 @@
 	<div class="limiter">
 			<div *ngIf="form.errors" class="alert alert-danger">username or password is invalid</div>
 		<div class="container-login100 bgImgCenter" >
+				
 			<div class="wrap-login100">
 				<form class="login100-form validate-form " [formGroup]="form" (ngSubmit)="login()" >
 					
@@ -61,6 +62,11 @@
 					<div class="text-center p-t-90">
 						<a class="txt1" href="#">
 							Forgot Password?
+						</a>
+					</div>
+					<div class="text-center p-t-90">
+						<a class="txt2"  (click)="onRegistratin()">
+							New Registration
 						</a>
 					</div>
 				</form>

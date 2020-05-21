@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 // import { FileUploadService } from '../file-upload.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GetData } from '../services/get-data.service';
 
 @Component({
   selector: 'question-form',
@@ -10,8 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./question-form.component.css']
 })
 export class QuestionFormComponent implements OnInit {
+  A = false;
+  B = false;
+  C = false;
+  D = false;
+  E = false;
+  F = false;
   isCollapsed:boolean=true;
   contactMethod;
+  dd;
   selectedFile:File=null;
   contactMethods=[
     {id: 1, name: 'Freshers'},
@@ -24,12 +32,16 @@ export class QuestionFormComponent implements OnInit {
     Answer_B: new FormControl('', [Validators.required]),
     Answer_C: new FormControl(''),   
     Answer_D:  new FormControl('', Validators.required),
+    Answer_E:  new FormControl('', Validators.required),
+    Answer_F:  new FormControl('', Validators.required),
     Currect_ANS:  new FormControl('', Validators.required),
-    contactMethod: new FormControl('', Validators.required)
+    contactMethod: new FormControl('', Validators.required),
+    language: new FormControl('', Validators.required)
    
   });
   
-  constructor(private http: HttpClient,private router: Router) { }
+  
+  constructor(private http: HttpClient,private router: Router,private getdata: GetData) { }
 
   
   ngOnInit() {
@@ -46,7 +58,7 @@ export class QuestionFormComponent implements OnInit {
     const fb=new FormData();
     fb.append('xlsx',this.selectedFile,this.selectedFile.name);
     fb.append('profile',this.contactMethod)
-    this.http.post('',fb)
+    this.http.post('http://localhost:51065/api/FileUpload',fb)
       .subscribe(res=>{
         console.log(res);
       });
@@ -55,11 +67,29 @@ export class QuestionFormComponent implements OnInit {
   submit()
   {
     console.log(this.userForm);
+    if(this.userForm.status!="INVALID")
+    {
+       let da=this.getdata.postQuestion(this.userForm.value.Question,this.userForm.value.Answer_A,this.userForm.value.Answer_B,this.userForm.value.Answer_C,this.userForm.value.Answer_D,this.userForm.value.Answer_E,this.userForm.value.Answer_F,this.userForm.value.Currect_ANS,this.userForm.value.contactMethod,this.userForm.value.language)
+    .subscribe((res)=>{
+        // console.log(res);
+        this.dd=res;
+       console.log(this.dd);
+      });  
+      this.userForm.reset();
+      this.router.navigate(['/question-form']);
+    }
+    else{
+      console.log("error");
+    }
+   
   }
   selected(){
     console.log(this.userForm.value.contactMethod);
-  }
     
+  }
+  viewQuestion(){
+    this.router.navigate(['/question-view']);
+  }
     onLogout(){
       localStorage.removeItem('name');
       localStorage.removeItem('pass');
@@ -74,6 +104,17 @@ export class QuestionFormComponent implements OnInit {
     manu()
     {
       this.isCollapsed=false;
+    }
+    
+    changeValue(event){
+      console.log(event);
+      console.log(this.A);
+      console.log(this.userForm.value.Answer_A);
+      
+       
+        this.userForm.controls['Currect_ANS'].setValue(this.userForm.value.Answer_A+","+this.userForm.value.Answer_B+","+this.userForm.value.Answer_C+","+this.userForm.value.Answer_D);
+        console.log(this.userForm.value.Currect_ANS);
+      
     }
 
     get Question() {
@@ -90,9 +131,17 @@ export class QuestionFormComponent implements OnInit {
    }    
    get Answer_D() {
       return this.userForm.get('Answer_D');
-   }      
+   }  
+   get Answer_E() {
+    return this.userForm.get('Answer_E');
+ } 
+ get Answer_F() {
+  return this.userForm.get('Answer_F');
+}     
    get Currect_ANS() {
     return this.userForm.get('Currect_ANS');
   }      
-  
+  get language() {
+    return this.userForm.get('language');
+  }      
 }

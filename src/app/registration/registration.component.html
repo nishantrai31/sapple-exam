@@ -1,96 +1,121 @@
 <html>
-		
+
 <body>
-	
-	
-<div class="card">
+
+
+	<div class="card">
 		<div *ngIf="userForm.errors" class="alert alert-danger"> invalid</div>
-	<div id="navbar">
-		<div id="login-button" class="align-right" (click)="onLogin()">Login</div>
-		<span class="align-right"> | </span>
-	  
-	  <div id="sign-up-button" class="align-right active" onClick="ShowSignUpForm()">Sign-up</div>
-	</div>
-  
-	
-	<form id="sign-up-form" [formGroup]="userForm" (ngSubmit)="SignUp()" >
-  
-	  <div class="label-container">Email</div>
-	  <div class="input-container">
-		<i class="fa fa-envelope first-signup-icon"></i>
-		<input type="text" formControlName="email" class="form-control"/>
-	  </div>
-  
-	  <div class="clear-float"></div>
-	  
-	  <div class="label-container">Username</div>
-	  <div class="input-container">
-		<i class="fa fa-user second-signup-icon"></i>
-		<input type="text" formControlName="username" class="form-control"/>
-		<div *ngIf="username.touched && username.invalid" class="alert alert-danger">
-			<div *ngIf="username.errors.pattern">pattern not match</div>
-			<div *ngIf="username.errors.required">username is required</div>
-		
+		<div id="navbar">
+			<div id="login-button" class="align-right" (click)="onLogin()">Login</div>
+			<span class="align-right"> | </span>
+
+			<div id="sign-up-button" class="align-right active" onClick="ShowSignUpForm()">Sign-up</div>
 		</div>
-		
-	  </div>
-	 
-	  <div class="clear-float"></div>
-  
-	  <div class="label-container">Password</div>
-	  <div class="input-container">
-		<i class="fa fa-lock thirt-signup-icon"></i>
-		<input type="password" formControlName="password" class="form-control"/>
-	  </div>
-  
-	  <div class="clear-float"></div>
-  
-	  <div class="label-container">Confirm Password</div>
-	  <div class="input-container">
-			<div *ngIf="conpassword.touched && conpassword.invalid" class="alert alert-danger">
-					<div  *ngIf="conpassword.errors.passwordMatchValidator">password  not match</div>
-					<div  *ngIf="conpassword.errors.required">password is required</div>
-				
+
+
+		<form id="sign-up-form" [formGroup]="userForm" (ngSubmit)="SignUp()">
+
+			<div class="label-container">Email</div>
+			<div class="input-container">
+				<i class="fa fa-envelope first-signup-icon"></i>
+				<input type="email" formControlName="email" class="form-control" />
+			</div>
+
+			<div class="clear-float"></div>
+
+			<div class="label-container">Username</div>
+			<div class="input-container">
+				<i class="fa fa-user second-signup-icon"></i>
+				<input type="text" formControlName="username" class="form-control" />
+				<div *ngIf="username.touched && username.invalid" class="alert ale">
+					<div *ngIf="username.errors.pattern">pattern not match</div>
+					<div *ngIf="username.errors.required">username is required</div>
+
 				</div>
-		<i class="fa fa-lock second-login-icon"></i>
-		<input type="password" formControlName="conpassword" class="form-control"/>
+				<div class="clearfix"></div>
+			</div>
 
-		
-	  </div>
+			<div class="clear-float"></div>
 
-	  <div class="clear-float"></div>
-  
-	  <div class="label-container">Mobile No.</div>
-	  <div class="input-container">
-		<i class="fa fa-lock second-login-icon"></i>
-		<input type="text" formControlName="mobileNumber" name="nishant"  onkeypress="return event.charCode >= 48 && event.charCode <= 57"cclass="form-control">
+			<div class="label-container">Password</div>
+			<div class="input-container">
+				<i class="fa fa-lock thirt-signup-icon"></i>
+				<input type="password" formControlName="password" class="form-control" />
 
-		<div *ngIf="mobileNumber.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass] = "'error'"> 
-			<div *ngIf="mobileNumber.errors.pattern">
-				Mobile number not valid.
-			</div> 
-		</div>
-	  </div>
-	  <div class="clear-float"></div>
-	  <div class="label-container">Data Of Birth </div>
-	  <div class="input-container">
-		<i class="fa fa-lock second-login-icon"></i>
-		<input type="date" formControlName="dateOfBirth" class="form-control"/>
-	  </div>
+			</div>
 
-	  <div class="clear-float"></div>
-	  <div class="label-container">profile </div>
-	  <div class="input-container">
-		<i class="fa fa-lock second-login-icon"></i>
-		<input type="text" formControlName="profile" class="form-control"/>
-	  </div>
+			<div class="clear-float"></div>
 
-	  <div class="clear-float"></div>
-	 <button type="submit"  [disabled]="userForm.invalid">sign-Up</button>
-  
-	</form>
-  </div>
+			<div class="label-container">Confirm Password</div>
+			<div class="input-container">
+			
+				<i class="fa fa-lock second-login-icon"></i>
+				<input type="password" formControlName="conpassword" class="form-control" />
+
+				<div *ngIf="conpassword.touched && conpassword.invalid" class="ale">
+						<div  *ngIf="conpassword.errors.passwordMatchValidator">password not match</div>
+						<div  *ngIf="conpassword.errors.required">password is required</div>
+							
+					</div>
+			</div>
+			
+			<div class="clear-float"></div>
+
+			<div class="label-container">Mobile No.</div>
+			<div class="input-container">
+				<i class="fa fa-lock second-login-icon"></i>
+				<input type="text" formControlName="mobileNumber" name="nishant"
+					onkeypress="return event.charCode >= 48 && event.charCode <= 57" cclass="form-control">
+
+				<div *ngIf="mobileNumber.errors && isValidFormSubmitted != null && !isValidFormSubmitted"
+					[ngClass]="'error'">
+					<div *ngIf="mobileNumber.errors.pattern">
+						Mobile number not valid.
+					</div>
+				</div>
+			</div>
+			<div class="clear-float"></div>
+			<div class="label-container">Data Of Birth </div>
+			<div class="input-container">
+				<i class="fa fa-lock second-login-icon"></i>
+				<input type="date" formControlName="dateOfBirth" class="form-control" />
+			</div>
+
+			<div class="clear-float"></div>
+			<div class="label-container">profile </div>
+			<div class="input-container">
+				<i class="fa fa-lock second-login-icon"></i>
+				<input type="text" formControlName="profile" class="form-control" />
+			</div>
+
+			<div class="clear-float"></div>
+
+			<p>Choose permission:</p>
+
+			<div *ngIf= readpermission>
+				<input type="checkbox" id="read" formControlName="read" name="Read" checked>
+				<label for="scales">Read</label>
+			</div>
+
+			<div *ngIf= writepermission>
+				<input type="checkbox" id="write" formControlName="write" name="write">
+				<label for="horns">Write</label>
+			</div>
+
+			<div *ngIf= deletepermission>
+				<input type="checkbox" id="delete" formControlName="delete" name="delete">
+				<label for="horns">Delete</label>
+			</div>
+
+			<div *ngIf= updatepermission>
+				<input type="checkbox" id="update" formControlName="update" name="update">
+				<label for="horns">Update</label>
+			</div>
+			<div class="clear-float"></div>
+			<button type="submit" [disabled]="userForm.invalid">sign-Up</button>
+
+		</form>
+	</div>
 </body>
-</html>
 
- 
+</html>

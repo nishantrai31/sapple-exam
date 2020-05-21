@@ -1,3 +1,4 @@
+
 <mat-sidenav-container  >
         <mat-sidenav  #sidenav mode="push" [(opened)]="opened">
                 <div class="logoMain"><img src="https://www.sapplesystems.com/wp-content/uploads/2015/10/sapple-logo_New.png" alt="Logo" /></div>
@@ -10,6 +11,10 @@
                         <li  (click)="onLogout()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> logout</li>
                         <li  (click)="onRegistratin()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> New Registration</li>
                         <li  (click)="onQuestion()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> Question</li> 
+                        <li  (click)="onQuestionTemplate()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> Question Template</li> 
+                        <li  (click)="onQuestuionView()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> Question View</li> 
+                        <li  (click)="onTemplateView()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> Template View</li> 
+                        <li  (click)="onCandidateView()"  *ngIf="isLoggedIn$ | async"><span  class="glyphicon glyphicon-off" aria-hidden="true"></span> Candidate</li> 
                 </ul>
         </mat-sidenav>
         <mat-sidenav-content>

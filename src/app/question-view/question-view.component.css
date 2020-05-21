@@ -1,0 +1,44 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background: linear-gradient(to right, #ddc5c5, #1a237e); 
+    color: #ededed;
+    height: 100%;
+    width: 100%;
+}
+
+
+.mat-button{
+    background: violet;
+}
+.mat-paginator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 56px;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    /* top: 100px; */
+    margin-top: 65%;
+    background: teal;
+}
+.example-card {
+    max-width: 400px;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .mat-card {
+    background: #676060;
+    color: #fff;
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: unset;
+    padding: 16px;
+    border-radius: 18px;
+    margin-left: 200px;
+}

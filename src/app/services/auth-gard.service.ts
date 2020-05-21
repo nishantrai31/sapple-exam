@@ -37,7 +37,13 @@ export class AuthGard {
       this.router.navigate(['/profile']);
     
   }
-  logout() {                            // {4}
+  afterlogin(){
+    this.loggedIn.next(true);
+  }
+  logout() {    
+  localStorage.removeItem('name')  ;     
+  localStorage.removeItem('pass')  ;   
+  localStorage.removeItem('token')  ;                    // {4}
   this.loggedIn.next(false);
   this.router.navigate(['/']);
 

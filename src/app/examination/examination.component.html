@@ -1,0 +1,92 @@
+
+<div class="tab-content" *ngIf="!CandidateSign">
+    <div id="candidate">            
+        <form id="singUp" [formGroup]="CandidateForm" (ngSubmit)="CandidateSignUp()">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+               Name<span class="req">*</span>
+              </label>
+              <input id="candidateName" type="text" required autocomplete="off" formControlName="candidateName" class="form-control"/>
+              <!-- <div *ngIf="candidateName.touched && candidateName.invalid" class="alert ale">
+                
+                <div *ngIf="candidateName.errors.required">username is required</div>
+
+                </div> -->
+            </div>  
+                  
+
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input id="candidateEmailId" type="email"required autocomplete="off" formControlName="candidateEmailId" class="form-control"/>
+          </div>
+         
+          <div class="field-wrap">
+            <label>
+              Mobile Number<span class="req">*</span>
+            </label>
+            <input id="candidateMobile"
+            type="number" required autocomplete="off" formControlName="candidateMobile" class="form-control"/>
+          </div>
+          
+            <button id="CandidateButton"type="submit" [disabled]="CandidateForm.invalid">Get Started</button >
+         </div> 
+        </form>
+
+        </div>
+     </div>
+
+
+<div *ngIf="CandidateSign">
+
+<div *ngIf="!scorestatus">
+    <div class="quizContainer container-fluid well well-lg" *ngIf="qns">
+        <div id="quiz1" class="text-center">
+			<h3>KGCAS - Javascript FDP 2018</h3>
+            <div><img class="img-responsive" height="180" width="180" src="https://www.sapplesystems.com/wp-content/uploads/2015/10/sapple-logo_New.png"></div>
+            <div class="row" *ngIf="qns && this.qnProgress != 10"></div>
+            <h4 style="color:#FF0000;position:absolute;left:70%;top:30%;"  align="center" ><span id="iTimeShow" >Time Remaining: {{displayTimeElapsed()}}</span><br/><span id='timer' style="font-size:25px;"></span></h4>
+            <!-- <div class="progress">
+                <div class="determinate" [style.width.%]="(qnProgress+1)*10"></div>
+              </div> -->
+			<h2>jQuery Quiz</h2>
+		</div>
+		<!-- <button *ngIf="!this.hideButton" (click)="openFullscreen()"  class="btn btn-warning btn-block">START</button> -->
+        <div class="question"><p>Question: {{qns[QuestionNumber].Question}}</p></div>
+        <div *ngIf=isCheck>
+            <ul class="choiceList">
+                <section class="example-section">        
+                <mat-checkbox class="example-margin" *ngFor="let op of qns[QuestionNumber].Options.option"  (change)="OnChange($event)" [value]="op">{{op}} </mat-checkbox> 
+                
+            </section>
+            </ul>
+        </div>
+        <div *ngIf=isRadio>
+            <ul class="choiceList">
+                <mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="radioSelected">
+  <mat-radio-button class="example-radio-button" *ngFor="let op of qns[QuestionNumber].Options" [value]="op.OPID">
+    {{op.option}}
+  </mat-radio-button>
+</mat-radio-group>         
+            </ul> 
+        </div>
+        <div class="quizMessage"></div>
+        <div class="result"></div>
+		<button class="preButton" (click)="PreviousQn()">Previous Question</button>
+        <button class="nextButton" (click)="NextQn()">Next Question</button>
+    </div>
+    <button class="submit" (click)="submitScore(true)">submit</button>
+  </div>
+  <div *ngIf="scorestatus">
+    <p>
+      {{this.status}}
+    </p>
+  </div>
+</div>
+    

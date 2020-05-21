@@ -12,8 +12,17 @@ import { RouterModule } from '@angular/router';
 import { AuthGard } from './services/auth-gard.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatSidenavModule} from '@angular/material';
+import {MatButtonModule, MatSidenavModule, MatPaginator, MatPaginatorModule, MatExpansionModule, MatCard, MatCardModule, MatInputModule, MatSelectModule, MatCheckboxModule,MatRadioModule, MatProgressSpinnerModule,MatIconModule} from '@angular/material';
 import { ProfileComponent } from './profile/profile.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+import { QuestionViewComponent } from './question-view/question-view.component';
+import { ExaminationComponent } from './examination/examination.component';
+import { QuestionTemplateComponent } from './question-template/question-template.component';
+
+import {MatTableModule} from '@angular/material/table';
+import { TestComponent } from './test/test.component';
+import { TemplateViewComponent } from './template-view/template-view.component';
+import { CandidateViewComponent } from './candidate-view/candidate-view.component';
 
 
 
@@ -24,7 +33,14 @@ import { ProfileComponent } from './profile/profile.component';
     QuestionFormComponent,
     NotFoundComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditprofileComponent,
+    QuestionViewComponent,
+    ExaminationComponent,
+    QuestionTemplateComponent,
+    TestComponent,
+    TemplateViewComponent,
+    CandidateViewComponent
     
   ],
   imports: [
@@ -37,14 +53,31 @@ import { ProfileComponent } from './profile/profile.component';
       { path: '', component: HomeComponent },
       { path: 'question-form', component: QuestionFormComponent,
       canActivate:[AuthGard] },
-      { path: 'Registration', component: RegistrationComponent },
+      { path: 'question-view', component:  QuestionViewComponent, canActivate:[AuthGard]},
+      { path: 'Registration', component: RegistrationComponent, canActivate:[AuthGard] },
       { path: 'profile', component: ProfileComponent, canActivate:[AuthGard]},
+      { path: 'editprofile', component: EditprofileComponent, canActivate:[AuthGard]},
+      { path: 'examination', component: ExaminationComponent},
+      { path: 'question-template', component: QuestionTemplateComponent},
+      { path: 'Template_View', component: TemplateViewComponent},
+      { path: 'candidate-view', component: CandidateViewComponent},
+      { path: 'test', component: TestComponent},
       { path: '**', component: NotFoundComponent }
      
     ]),
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatIconModule
     
   ],
   providers: [

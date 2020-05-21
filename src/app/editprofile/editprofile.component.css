@@ -1,0 +1,17 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background: linear-gradient(to right, #ddc5c5, #1a237e); 
+    color: #ededed;
+    height: 100%;
+    width: 100%;
+}
+.main-secction{
+    box-shadow: 10px 10px 10px;
+    background: linear-gradient(to right, #040a1d, #31212b); 
+  }
+  .user-image img{
+    width:170px;
+    height:170px;
+  }

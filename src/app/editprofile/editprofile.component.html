@@ -1,0 +1,77 @@
+<body>
+  <div class="container main-secction">
+    <h1>Edit Profile</h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-xs-3">
+        <div class="text-center user-image">
+          <img [src]="imageURL1" class="avatar img-circle" alt="avatar">
+          <h6>Upload a profile photo...</h6>
+          
+          <input type="file" class="form-control" (change)="onSelectedFile1($event)">
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="text-center user-image">
+          <img [src]="imageURL" class="avatar img-circle" alt="avatar">
+          <h6>Upload a timeline photo...</h6>
+          
+          <input type="file" class="form-control" (change)="onSelectedFile($event)">
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        
+        <h3>Personal info</h3>
+        
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">User name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value={{username}}>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Company:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value={{email}}>
+            </div>
+          </div>
+          
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value={{password}}>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value={{password}}>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="button" class="btn btn-primary" value="Save Changes" (click)="Save()">
+              <span></span>
+              <input type="reset" (click)="profile()" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+</body>

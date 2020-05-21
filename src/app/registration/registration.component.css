@@ -22,6 +22,7 @@ i {
   padding-left: 5px;
   z-index: 0 !important;
   text-shadow: none;
+  
 }
 .first-login-icon {
   top: 33px;
@@ -50,7 +51,7 @@ i {
   animation: mymove ;
   animation-duration: 3s; 
   width: 750px;
-  height: 550px;
+  height: 727px;
   margin: 0 auto;
   /* background: #503D5B
   url('../../assets/images/body-bg.jpg'); */
@@ -138,6 +139,7 @@ input[type="checkbox"] {
 }
 .input-container input[type="text"], 
 .input-container input[type="date"],
+.input-container input[type="email"],
 .input-container input[type="tel"], 
 .input-container input[type="password"] {
   height: 35px;
@@ -192,4 +194,12 @@ button:focus {
 
 .clear-float {
   clear: both;
+  margin: 10px;
+}
+
+.ale{
+  margin-top: -15px;
+  color:red;
+  height: 27px;
+  
 }

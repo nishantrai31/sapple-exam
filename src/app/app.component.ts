@@ -37,6 +37,10 @@ export class AppComponent {
   // show(){
   //   return this.loggedIn.asObservable();
   // }
+  onHome(){
+    this.router.navigate(['/profile']);
+    
+  }
   onRegistratin(){
     this.router.navigate(['/Registration']);
   }
@@ -45,7 +49,21 @@ export class AppComponent {
     this.router.navigate(['/question-form']);
   }
 
-  onHome(){
-    this.router.navigate(['/']);
+  onQuestionTemplate(){
+    this.router.navigate(['/question-template']);
+  }
+
+  
+  onQuestuionView(){
+    this.router.navigate(['/question-view']);
+  }
+
+  
+  onTemplateView(){
+    this.router.navigate(['/Template_View']);
+  }
+
+  onCandidateView(){
+    this.router.navigate(['/candidate-view']);
   }
 }

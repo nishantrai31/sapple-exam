@@ -25,28 +25,38 @@ export class HomeComponent implements OnInit {
 
   login(){
     let token=localStorage.getItem('name');
-    if(token==''){
-    let da=this.getdata.getlogin(this.username.value,this.password.value)
-    .subscribe((res)=>{
-      // console.log(res);
-      this.dd=res;
-     console.log(this.dd);
-     const helper = new JwtHelperService();
-
-    this.decodedToken = helper.decodeToken(this.dd);
-    console.log(this.decodedToken.unique_name);
+    console.log(this.username);
+    if(this.username.value!="")
+    {
+      if(token==null){
+        let da=this.getdata.getlogin(this.username.value,this.password.value)
+        .subscribe((res)=>{
+          // console.log(res);
+          this.dd=res;
+          console.log(this.dd);
+         const helper = new JwtHelperService();
     
-    //  console.log(this.dd[0].email);
-     
-      this.user();
-      console.log("lohin su")
-    });    
-  }
-  else{
-    this.authService.login();
-  }
+        this.decodedToken = helper.decodeToken(this.dd);
+        console.log(this.decodedToken);
+         
+          this.user();
+          console.log("lohin su")
+        });    
+      }
+      else{
+        this.authService.login();
+      }
+    }
+    else{
+      this.form.setErrors({
+        invalidLogin: true
+  
+      });
+    }
+ 
   }
   ngOnInit() {
+    localStorage.clear();
   }
   user(){
     // console.log(this.username.value);
@@ -61,6 +71,8 @@ export class HomeComponent implements OnInit {
     {
       localStorage.setItem('name',this.username.value);
       localStorage.setItem('pass',this.password.value);
+      localStorage.setItem('username',this.decodedToken.username)
+      localStorage.setItem('token',this.dd);
       // console.log("login");
       this.authService.login();
       // this.router.navigate(['/question-form']);

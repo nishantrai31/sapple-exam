@@ -1,0 +1,97 @@
+<mat-progress-spinner *ngIf="loader"
+        class="example-margin"
+        color="primary"
+        [mode]="mnode"
+        value="20">
+    </mat-progress-spinner>
+    <div class="row"  *ngIf="showMsg">
+      <div class="col-xs-12">
+        <p class="alert alert-success">
+            <strong>Tamplete save Successfully!</strong>
+        </p>
+      </div>
+    </div>
+<div *ngIf="dataSource" >
+  <mat-form-field>
+    <mat-label>Language</mat-label>
+    <mat-select [(value)]="languageselected" >
+      <mat-option value="all" (click)="SelectedLanguage()">All</mat-option>
+      <mat-option *ngFor="let la of Language" (click)="SelectedLanguage()" value={{la.language}} >{{la.language}}</mat-option>
+    </mat-select>
+  
+  </mat-form-field>
+<mat-form-field>
+  <mat-label>Level</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option (click)="Selectedlevel()" value="all">ALL</mat-option>
+    <mat-option (click)="Selectedlevel()" value="h">high</mat-option>
+    <mat-option (click)="Selectedlevel()" value="m">medium</mat-option>
+    <mat-option (click)="Selectedlevel()" value="l">low</mat-option>
+  </mat-select>
+
+</mat-form-field>
+<mat-form-field class="example-full-width" *ngIf="!update">
+  <mat-label>Enter Templete Name</mat-label>
+  <input type="number" matInput placeholder="Ex. Freshertemp" [formControl] ="TempleteName"/>
+<mat-error *ngIf = "TempleteName.hasError('required')">
+      Templete Name is <strong>required</strong>
+      </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Enter passing score</mat-label>
+    <input  matInput placeholder="Ex. 60" [formControl] ="score"/>
+  <mat-error *ngIf = "score.hasError('required')">
+        Templete score is <strong>required</strong>
+        </mat-error>
+    </mat-form-field> 
+
+    <button mat-raised-button color="primary" (click)="Save()" *ngIf="!update">Save</button>
+    <button mat-raised-button color="primary" (click)="updatedata()" *ngIf="update">Update</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+  
+    <!-- QuestionID Column -->
+    <ng-container matColumnDef="QuestionID">
+      <th mat-header-cell *matHeaderCellDef> Question ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.QuestionID}} </td>
+    </ng-container>
+  
+    <!-- Question Column -->
+    <ng-container matColumnDef="Question">
+      <th mat-header-cell *matHeaderCellDef> Question </th>
+      <td mat-cell *matCellDef="let element"> {{element.Question}} </td>
+    </ng-container>
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+</div>
+  

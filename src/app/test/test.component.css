@@ -1,0 +1,23 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('../../assets/images/blue-shield-png-5.png');
+    background-size: cover;
+  }
+.laoo{
+    background-color: lightblue;
+    height: 1000px;
+}
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+
+    left:300px;
+    top:100px;
+    width: 300px;
+
+}
+.mat-drawer-content {
+  
+    background-color: lightblue;
+}

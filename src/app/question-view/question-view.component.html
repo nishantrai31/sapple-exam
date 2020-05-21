@@ -1,0 +1,83 @@
+<body>
+
+<div *ngIf=isCollapsed>
+<mat-accordion *ngIf="dd!=null">
+    <mat-expansion-panel *ngFor="let panel of (dd | slice: lowValue : highValue)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+                {{panel.Question}}
+                
+        </mat-panel-title>
+        <mat-panel-description>
+         for {{panel.Exp}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p *ngIf="panel.Option_A!==''">A={{panel.Option_A}} </p> <p *ngIf="panel.Option_B!==''">  B={{panel.Option_B}}</p>
+      <p *ngIf="panel.Option_C!==''">C={{panel.Option_C}} </p> <p *ngIf="panel.Option_D!==''">  D={{panel.Option_D}}</p>
+      <p *ngIf="panel.Option_E!==''">E={{panel.Option_E}} </p> <p *ngIf="panel.Option_F!==''">  F={{panel.Option_F}}</p>
+      <p >  Answer={{panel.Answer}}</p>
+      <button mat-button (click)="editQ(panel)">edit</button>
+    </mat-expansion-panel>
+    
+  </mat-accordion>
+  <mat-paginator class="paginator" [length]="dd.length" pageSize=20
+  (page)="getPaginatorData($event)" [pageSizeOptions]="[1, 20, 30]"
+  showFirstLastButtons="false">
+</mat-paginator>
+</div>
+
+<div *ngIf=!isCollapsed>
+  <mat-card class="example-card">
+    <mat-card-header>
+      
+      <mat-card-title>Question Editer</mat-card-title>
+      
+    </mat-card-header>
+    <form class="example-form" [formGroup]="QuForm" (ngSubmit)="Update()">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Question"  formControlName="Question" [value]="questionEvent.Question">
+      </mat-form-field><br>
+    
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="option A"  formControlName="Option_A" [value]="questionEvent.Option_A">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="option B"  formControlName="Option_B" [value]="questionEvent.Option_B">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="option C"  formControlName="Option_C" [value]="questionEvent.Option_C">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="option D"   formControlName="Option_D"[value]="questionEvent.Option_D">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="option E"   formControlName="Option_E" [value]="questionEvent.Option_E">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="option F"   formControlName="Option_F" [value]="questionEvent.Option_F">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="answer"  formControlName="Currect_ANS" [value]="questionEvent.Answer">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Language"   formControlName="language" [value]="questionEvent.language">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select formControlName="Exp" [(value)]="questionEvent.Exp">
+          <mat-option>None</mat-option>
+          <mat-option value="Freshers">Freshers</mat-option>
+          <mat-option value="Expirence">Expirence</mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    <mat-card-actions>
+      <button mat-button type="submit">Done</button>
+      <button mat-button (click)="Cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+  </mat-card>
+
+</div>
+</body>

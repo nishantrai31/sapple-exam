@@ -23,6 +23,7 @@ import {MatTableModule} from '@angular/material/table';
 import { TestComponent } from './test/test.component';
 import { TemplateViewComponent } from './template-view/template-view.component';
 import { CandidateViewComponent } from './candidate-view/candidate-view.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -40,7 +41,8 @@ import { CandidateViewComponent } from './candidate-view/candidate-view.componen
     QuestionTemplateComponent,
     TestComponent,
     TemplateViewComponent,
-    CandidateViewComponent
+    CandidateViewComponent,
+    HomePageComponent
     
   ],
   imports: [
@@ -61,6 +63,7 @@ import { CandidateViewComponent } from './candidate-view/candidate-view.componen
       { path: 'question-template', component: QuestionTemplateComponent},
       { path: 'Template_View', component: TemplateViewComponent},
       { path: 'candidate-view', component: CandidateViewComponent},
+      { path: 'homepage', component: HomePageComponent},  
       { path: 'test', component: TestComponent},
       { path: '**', component: NotFoundComponent }
      

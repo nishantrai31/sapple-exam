@@ -34,7 +34,7 @@ export class AuthGard {
   login(){
    
       this.loggedIn.next(true);
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/homepage']);
     
   }
   afterlogin(){

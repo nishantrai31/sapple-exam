@@ -1,0 +1,36 @@
+.navbar .nav-link{
+    font-size : 14px;
+    text-transform: uppercase;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.navbar .nav-item-active{
+    border-left: #444 3px solid;
+}
+.MainHeading{
+    color: #738f93;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 44px;
+}
+.subHeading{
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.subP{
+    color: #333333;
+}
+.backgroundGrey{
+    background-color: #f7fcf9;
+}
+.height100{
+    height: 100vh;
+}
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
